@@ -5,12 +5,14 @@ void DisplayMenu(shared_ptr<Folder> currentFolder, shared_ptr<Folder> parent);
 void AddFileMenu(shared_ptr<Folder> currentFolder);
 void AddFolderMenu(shared_ptr<Folder> currentFolder);
 shared_ptr<Folder> NavigateToFolder(shared_ptr<Folder> currentFolder);
+void SearchForFile(shared_ptr<Folder> currentFolder);
 
 int main()
 {
 	auto currentFolder = make_shared<Folder>("Root");
 	auto parentFolder = make_shared<Folder>();
 	parentFolder = nullptr;
+
 	int choice = 0;
 	while (choice != -1) {
 		DisplayMenu(currentFolder, parentFolder);
@@ -26,7 +28,7 @@ int main()
 			cout << endl << "Now in folder " << newcurrent->getName() << "!";
 			break;
 		}
-		case 5: //IMPLEMENT THIS
+		case 5: SearchForFile(currentFolder); break;
 		case 4: AddFolderMenu(currentFolder); break;
 		case 6: {
 			if (parentFolder != nullptr) {
@@ -50,6 +52,24 @@ shared_ptr<Folder> NavigateToFolder(shared_ptr<Folder> currentFolder)
 
 	auto folder = currentFolder->FindFolder(name);
 	return folder;
+}
+
+void SearchForFile(shared_ptr<Folder> currentFolder)
+{
+	//Prompt for file name
+	//Search the current folder for file
+	//Add method folder to for search file
+	//print so it does not show memory address.
+	system("cls");
+	cout << "Enter the file name you want to find: ";
+	string name;
+	cin >> name;
+	cin.ignore();
+
+	auto file = currentFolder->FindFile(name);
+	cout << file << endl;
+	system("pause");
+	
 }
 
 void DisplayMenu(shared_ptr<Folder> currentFolder, shared_ptr<Folder> parent)
