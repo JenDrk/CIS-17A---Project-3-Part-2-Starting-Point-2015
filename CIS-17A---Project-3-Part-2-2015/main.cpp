@@ -66,8 +66,10 @@ void SearchForFile(shared_ptr<Folder> currentFolder)
 	cin >> name;
 	cin.ignore();
 
+	//if found print "found"
+	//else print not found
 	auto file = currentFolder->FindFile(name);
-	cout << file << endl;
+	cout << "File Found!" << endl;
 	system("pause");
 	
 }

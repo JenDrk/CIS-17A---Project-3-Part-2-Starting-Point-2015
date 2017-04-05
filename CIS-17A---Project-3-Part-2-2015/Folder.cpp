@@ -41,8 +41,6 @@ void Folder::AddFolder(std::shared_ptr<Folder> newFolder)
 	_folders.push_back(newFolder);
 }
 
-//FindFile similar to this.
-//switch folder for file
 std::shared_ptr<Folder> Folder::FindFolder(std::string name)
 {
 	for(auto folder : _folders)
@@ -59,8 +57,11 @@ std::shared_ptr<File> Folder::FindFile(std::string name)
 	//Loop/Iterate this folders files
 	//If you find a file with the passed in name, return it
 	//Otherwise return nullptr
-	for (auto file : _files)
+	//If search call returns nullptr -> File not found
+	//Otherwise print out the filename
+	for (auto folder : _folders)
 	{
+		//if (file != nullptr)
 		if (file->getName() == name) {
 			return file;
 		}
