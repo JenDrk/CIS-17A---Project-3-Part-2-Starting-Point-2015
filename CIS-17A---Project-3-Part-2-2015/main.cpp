@@ -56,19 +56,22 @@ shared_ptr<Folder> NavigateToFolder(shared_ptr<Folder> currentFolder)
 
 void SearchForFile(shared_ptr<Folder> currentFolder)
 {
-	//Prompt for file name
-	//Search the current folder for file
-	//Add method folder to for search file
-	//print so it does not show memory address.
 	system("cls");
 	cout << "Enter the file name you want to find: ";
 	string name;
 	cin >> name;
 	cin.ignore();
 
-	//if found print "found"
-	//else print not found
-	cout << "File Found!" << endl;
+	auto file = currentFolder->FindFile(name);
+
+	if (file != nullptr)
+	{
+		cout << "File found!" << endl;
+	}
+	else
+	{
+		cout << "File not found!" << endl;
+	}
 	system("pause");
 	
 }

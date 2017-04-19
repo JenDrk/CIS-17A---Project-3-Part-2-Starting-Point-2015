@@ -54,18 +54,12 @@ std::shared_ptr<Folder> Folder::FindFolder(std::string name)
 
 std::shared_ptr<File> Folder::FindFile(std::string name)
 {
-	//Loop/Iterate this folders files
-	//If you find a file with the passed in name, return it
-	//Otherwise return nullptr
-	//If search call returns nullptr -> File not found
-	//Otherwise print out the filename
-	for (auto folder : _folders)
+	for (auto file : _files)
 	{
-		auto file = folder->FindFile(name);
-		if (file != nullptr) {
+		if (file->getName() == name) {
 			return file;
 		}
 	}
-	
 	return nullptr;
+	
 }
