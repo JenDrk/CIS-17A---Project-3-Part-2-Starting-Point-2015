@@ -54,7 +54,7 @@ shared_ptr<Folder> NavigateToFolder(shared_ptr<Folder> currentFolder)
 	return folder;
 }
 
-void SearchForFile(shared_ptr<Folder> currentFolder)
+void SearchForFile(shared_ptr<Folder> _folder)
 {
 	system("cls");
 	cout << "Enter the file name you want to find: ";
@@ -62,7 +62,7 @@ void SearchForFile(shared_ptr<Folder> currentFolder)
 	cin >> name;
 	cin.ignore();
 
-	auto file = currentFolder->FindFile(name);
+	auto file = _folder->FindFile(name);
 
 	if (file != nullptr)
 	{
